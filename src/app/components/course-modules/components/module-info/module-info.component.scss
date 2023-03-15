@@ -1,0 +1,49 @@
+.example-card {
+    width: calc(100vw - 310px);
+    height: 100%;
+    margin-top: 150px;
+  /* margin-left: 15%;
+  top: 40px; */
+  /* margin-top: 4%; */
+  /* margin-bottom: 2%; */
+  }
+.title{
+    margin-top: 40px;
+  
+}
+.imgcard{
+    width:100px;
+    height:300px
+
+}
+:host ::ng-deep {
+  
+    .details{
+      float: right;
+      margin-top: 10px;
+      margin-right: 15%;
+  } 
+  .details >table{
+    // border: 2px solid #dddddd;
+    height: 250px;
+    width: 600px;
+      /* font-size: 22px;
+      font-weight: 500; */
+   td{
+     margin-left: 5px;
+   }
+      th,td{
+        border: 2px solid #dddddd;
+        text-transform: uppercase;
+  
+      }
+  }
+  
+  }
+table {
+    width:100%;
+  /* margin-left: 15%;
+  top: 40px; */
+  /* margin-top: 4%; */
+  /* margin-bottom: 2%; */
+  }

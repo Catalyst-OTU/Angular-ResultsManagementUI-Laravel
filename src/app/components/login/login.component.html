@@ -1,0 +1,83 @@
+<div class="main">
+  <div class="login-block">
+    <div class="left-side">
+      <img src="assets/aiti-kace.jpg" class="bg-image" />
+    </div>
+    <div class="right-side">
+      <div class="container">
+        <img src="assets/aiti-logo.png" class="image" />
+        <h1 style="text-align: center; font-weight: bold">Login</h1>
+
+        <form [formGroup]="loginForm" autocomplete="off">
+          <mat-form-field class="full-width">
+            <mat-label>Email</mat-label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              matInput
+              placeholder="Ex. ice@example.com"
+              formControlName="email"
+              required
+            />
+          </mat-form-field>
+          <br />
+
+          <mat-form-field class="full-width">
+            <mat-label>Password</mat-label>
+            <input
+              type="password"
+              [type]="hide ? 'password' : 'text'"
+              matInput
+              placeholder="Enter password"
+              formControlName="password"
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+          </mat-form-field>
+
+          <div
+            fxLayout="column"
+            fxLayoutGap="100px"
+            fxLayout.lt-md="column"
+            style="margin-top: 50px"
+          >
+            <div>
+              <button
+                class="full-width"
+                mat-raised-button
+                color="primary"
+                [disabled]="loginForm.invalid"
+                (click)="login()"
+              >
+                Login
+              </button>
+            </div>
+          </div>
+
+          <div style="margin-top: 10px; text-align: center">
+            <p (click)="openDialog()" class="forgot">Forgotten Password?</p>
+          </div>
+
+          <!-- <hr>
+          
+
+          
+          <div style="margin-top: 10px; ">
+            <i style="color:black;font-size:16px;">If you are a Student?</i>
+            <i style="float: right;font-size:16px;" (click)="openStudentSearchPage()" class="forgot">Login Here</i>
+          </div> -->
+
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

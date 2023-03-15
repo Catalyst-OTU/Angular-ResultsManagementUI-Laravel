@@ -1,0 +1,97 @@
+<h1>Courses List</h1>
+<ng-container *ngFor="let dashItem of cardsData">
+  <div class="dive">
+    <app-dashboard-cards
+      [messages]="dashItem.messages"
+      [headerIcon]="dashItem.headerIcon"
+      [headerColor]="dashItem.headerColor"
+    >
+    </app-dashboard-cards>
+  </div>
+</ng-container>
+<mat-form-field class="searchbar">
+  <mat-label>Search</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input />
+</mat-form-field>
+
+<button
+  *ngIf="'add' | ablePure: 'Course' | async"
+  mat-raised-button
+  color="primary"
+  class="button"
+  (click)="openAddDialog()"
+>
+  <mat-icon>add</mat-icon> &nbsp;Course
+</button>
+<div class="divtable">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          (click)="openInfoDialog(element)"
+          color="accent"
+        >
+          <mat-icon matTooltip="More Info">info</mat-icon>
+        </button>
+        &nbsp;&nbsp;
+        <button
+          *ngIf="'edit' | ablePure: 'Course' | async"
+          mat-icon-button
+          (click)="openDialog(element)"
+          color="primary"
+        >
+          <mat-icon matTooltip="Update">border_color</mat-icon>
+        </button>
+        &nbsp;&nbsp;
+        <button
+          *ngIf="'disable' | ablePure: 'all' | async"
+          mat-icon-button
+          (click)="openConfirmDialog(element)"
+          color="warn"
+        >
+          <mat-icon matTooltip="Disable">do_disturb_on</mat-icon>
+        </button>
+        <button
+          *ngIf="'add' | ablePure: 'Module' | async"
+          mat-icon-button
+          (click)="openModuleDialog(element)"
+          color="ekf-green"
+        >
+          <mat-icon matTooltip="Add Module">library_add_check</mat-icon>
+        </button>
+        &nbsp;&nbsp;
+        <button
+          *ngIf="'add' | ablePure: 'Course Batch' | async"
+          mat-icon-button
+          (click)="openBatchDialog(element)"
+          color="primary"
+        >
+          <mat-icon matTooltip="Add Batch">dynamic_feed</mat-icon>
+        </button>
+        &nbsp;&nbsp;
+      </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="course_name">
+      <th mat-header-cell *matHeaderCellDef>Course Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.course_name }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="6">
+        No data matching the filter "{{ input.value }}"
+      </td>
+    </tr>
+  </table>
+</div>
+
+<mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 15, 20]"></mat-paginator>

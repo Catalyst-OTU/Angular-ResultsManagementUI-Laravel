@@ -1,0 +1,18 @@
+<div>
+  <mat-toolbar class="header" mat-dialog-title>
+    {{ data?.title }}
+  </mat-toolbar>
+</div>
+
+<div mat-dialog-content>
+  <p>{{ data?.message }}</p>
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button [mat-dialog-close]="false" color="warn">
+    {{ data?.cancelCaption }}
+  </button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true">
+    {{ data?.confirmCaption }}
+  </button>
+</div>

@@ -1,0 +1,167 @@
+<mat-toolbar
+  mat-dialog-title
+  *ngIf="addOnlyForm"
+  style="background-color: rgb(63, 205, 134)"
+>
+  Add Course
+</mat-toolbar>
+
+<mat-toolbar
+  mat-dialog-title
+  *ngIf="!addOnlyForm"
+  style="background-color: rgb(63, 205, 134)"
+>
+  Update Course Details
+</mat-toolbar>
+
+<mat-dialog-content>
+  <ng-container>
+    <form [formGroup]="courseForm">
+      <div>
+        <mat-form-field class="email-full-width">
+          <mat-label>Course Name</mat-label>
+          <input
+            id="course_name"
+            name="course_name"
+            matInput
+            placeholder="Ex. DBC"
+            formControlName="course_name"
+            required
+          />
+          <mat-error>
+            {{ errors["course_name"] }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+       <!-- <div>
+        <mat-form-field class="email-full-width">
+          <mat-label>Course Level</mat-label>
+          <input
+            id="course_level"
+            name="code"
+            matInput
+            placeholder="Ex. DBC100"
+            formControlName="course_level"
+            required
+          />
+          <mat-error>
+            {{ errors["course_level"] }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="email-full-width">
+          <mat-label>Select Cordinator </mat-label>
+          <mat-select formControlName="coordinator">
+            <mat-option
+              *ngFor="let cordinator of courseCordinators"
+              [value]="cordinator.name"
+            >
+              {{ cordinator.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+        {{errors.course_name}}
+      </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="email-full-width">
+          <mat-label>Start Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="course_start_date"
+            id="course_start_date"
+            [min]="minDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error>
+            {{ errors["start_date"] }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="email-full-width">
+          <mat-label>End Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker1"
+            formControlName="course_end_date"
+            id="course_end_date"
+            [min]="courseForm.controls['course_start_date'].value"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker1"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+          <mat-error>
+            {{ errors["end_date"] }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="email-full-width">
+          <mat-label>Certificate Issue Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker2"
+            formControlName="certificate_issuedate"
+            id="certificate_issuedate"
+            [min]="courseForm.controls['course_end_date'].value"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker2"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+          <mat-error>
+            {{ errors["issue_date"] }}
+          </mat-error>
+        </mat-form-field>
+      </div> -->
+
+      <mat-form-field style="width: 100%" *ngIf="!addOnlyForm">
+        <mat-label>Status </mat-label>
+        <mat-select formControlName="status" required>
+          <mat-option *ngFor="let status of statusList" [value]="status.value">
+            {{ status.name }}
+          </mat-option>
+        </mat-select>
+        <!-- <mat-error>
+    {{errors.course_select}}
+  </mat-error> -->
+      </mat-form-field>
+    </form>
+    <div></div>
+  </ng-container>
+</mat-dialog-content>
+<div class="dialog-actions">
+  <mat-dialog-actions>
+    <button mat-raised-button color="warn" (click)="close()">Close</button>
+    &nbsp;&nbsp;
+    <button
+      *ngIf="addOnlyForm"
+      mat-raised-button
+      (click)="onAdd()"
+      [disabled]="courseForm.invalid"
+      color="primary"
+    >
+      Add
+    </button>
+    <button
+      *ngIf="!addOnlyForm"
+      mat-raised-button
+      (click)="onUpdate()"
+      color="primary"
+    >
+      Update
+    </button>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,47 @@
+
+.example-card {
+    width: calc(100vw - 310px);
+    height: 100%;
+    margin-top: 280px;
+  /* margin-left: 15%;
+  top: 40px; */
+  /* margin-top: 4%; */
+  /* margin-bottom: 2%; */
+  }
+.title{
+    margin-top: 90px;
+  
+}
+.example-tab-icon {
+  margin-right: 8px;
+}
+.tab{
+  font-family:'Times New Roman', Times, serif;
+
+  width: fit-content;
+  margin: auto;
+  /* display:flex; */
+  justify-content: center;
+  
+}
+table {
+  width: 100%;
+ 
+}
+.divtable{
+  overflow:hidden;
+  overflow-y: scroll;
+  height: 54vh;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 70%;
+}
+
+th.mat-header-cell{
+  text-transform: capitalize;
+}
+.dive{
+  display:inline-flex;
+  margin: 10px;
+  }

@@ -1,0 +1,40 @@
+<div class="info">
+  <h1>Student Info</h1>
+  <br />
+  <img src="assets/student.svg" alt="student" style="height: 250px" />
+  <div class="details" *ngIf="studentInfo">
+    <table>
+      <tr>
+        <th>Full name</th>
+        <td>{{ studentInfo.name }}</td>
+      </tr>
+      <tr>
+        <th>Student Id</th>
+        <td>{{ studentInfo.student_id }}</td>
+      </tr>
+      <tr>
+        <th>Date of Birth</th>
+        <td>{{ studentInfo.date_of_birth }}</td>
+      </tr>
+      <tr>
+        <th>Email Address</th>
+        <td>{{ studentInfo.email }}</td>
+      </tr>
+      <tr>
+        <th>Contact</th>
+        <td>{{ studentInfo.contact }}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+<br />
+<mat-divider style="margin-top: 5rem"></mat-divider>
+<mat-tab-group>
+  <mat-tab label="Currently Enrolled Courses">
+    <app-student-present-courses></app-student-present-courses>
+  </mat-tab>
+  <mat-tab label="Past Courses Enrolled">
+    <app-student-past-courses></app-student-past-courses>
+  </mat-tab>
+</mat-tab-group>
+<br />

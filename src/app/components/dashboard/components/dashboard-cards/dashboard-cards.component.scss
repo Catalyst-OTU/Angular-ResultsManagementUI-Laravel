@@ -1,0 +1,96 @@
+.card {
+    display: inline-block;
+    position: relative;
+    width: 250px;
+    height: 120px;
+    margin: 35px 0;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 14%);
+    border-radius: 8px;
+    // color: rgba(0, 0, 0, 0.87);
+    // background: #fff;
+    .card-content {
+      .card-heading {
+          text-align: center !important;
+          color: #3C4858;
+          text-decoration: none;
+          font-size: large;
+          margin-top: 0;
+      }
+    }
+}
+
+
+.card-stats .card-header {
+    float: left;
+    text-align: center;
+}
+
+.card [data-background-color] {
+    color: #FFFFFF;
+}
+
+.card [data-background-color] {
+    margin: -20px 15px 0;
+    border-radius: 3px;
+    padding: 15px;
+    // background-color: #999999;
+    position: relative;
+}
+.card .card-header {
+    padding: 15px 20px 0;
+    z-index: 3;
+}
+
+.card-stats .card-header i {
+    font-size: 36px;
+    line-height: 56px;
+    width: 56px;
+    height: 56px;
+}
+
+.card-stats .card-content {
+    text-align: right;
+    padding-top: 10px;
+}
+.card .card-content {
+    padding: 15px 20px;
+    position: relative;
+}
+
+.card .card-content .category {
+    margin-bottom: 0;
+}
+
+.card .category:not([class*="text-"]) {
+    color: #999999;
+    font-size: 13px;
+}
+
+.card .card-title:not(.card-calendar .card-title) {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.card-stats .card-title {
+    margin: 0;
+    color: #3C4858;
+    text-decoration: none;
+    font-size: x-large;
+    padding: 5px;
+}
+
+.card .card-footer {
+    margin: 0 20px 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eeeeee;
+}
+
+.card .card-footer .stats {
+    line-height: 22px;
+    color: #999999;
+    font-size: 12px;
+}
+
+.card .card-footer div {
+    display: inline-block;
+}

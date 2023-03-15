@@ -1,0 +1,64 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.usertype-badge {
+  border-radius: 2px;
+  padding: 0.25em 0.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+}
+
+.usertype-badge.usertype-instructor {
+  background: #c8e6c9;
+  color: #256029;
+}
+.usertype-badge.usertype-staff {
+  background: #e6c8c8;
+  color: #602525;
+}
+.usertype-badge.usertype-manager {
+  background: #cec8e6;
+  color: #252e60;
+}
+.usertype-badge.fees-fullpayment {
+  background: #c8e6c9;
+  color: #256029;
+}
+.usertype-badge.fees-partpayment {
+  background: #ffcdd2;
+  color: #c63737;
+}
+.usertype-badge.usertype-admin {
+  background: #ffcdd2;
+  color: #c63737;
+}
+
+.usertype-badge.usertype-coursecordinator {
+  background: #feedaf;
+  color: #8a5340;
+}
+
+.usertype-badge.usertype-director {
+  background-color: #b3e5fc;
+  color: #23547b;
+}
+
+.usertype-badge.usertype-academicsecretary {
+  background-color: #eccfff;
+  color: #694382;
+}
+
+.customer-badge.status-proposal {
+  background-color: #ffd8b2;
+  color: #805b36;
+}

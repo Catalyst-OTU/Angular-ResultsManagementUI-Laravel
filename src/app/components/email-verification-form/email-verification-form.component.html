@@ -1,0 +1,33 @@
+<mat-toolbar mat-dialog-title style="background-color: rgb(63, 205, 134)">
+  Send Confirmation Email
+</mat-toolbar>
+
+<mat-dialog-content>
+  <ng-container>
+    <form [formGroup]="resetForm" autocomplete="off">
+      <mat-form-field class="email-full-width">
+        <mat-label>Email</mat-label>
+        <input
+          type="text"
+          id="current_pass"
+          name="current_pass"
+          matInput
+          placeholder="Ex. john@mail.com"
+          formControlName="email"
+          autocomplete="off"
+          required
+        />
+      </mat-form-field>
+    </form>
+  </ng-container>
+</mat-dialog-content>
+
+<div class="dialog-actions">
+  <mat-dialog-actions>
+    <button mat-raised-button color="warn" (click)="close()">Close</button>
+    &nbsp;&nbsp;
+    <button mat-raised-button color="primary" (click)="sendEmailConfirmation()">
+      Request Password Reset
+    </button>
+  </mat-dialog-actions>
+</div>

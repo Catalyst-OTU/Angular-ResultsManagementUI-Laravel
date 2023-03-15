@@ -1,0 +1,75 @@
+.example-card {
+  width: calc(100vw - 310px);
+  height: 100%;
+  margin-top: 280px;
+  /* margin-left: 15%;
+  top: 40px; */
+  /* margin-top: 4%; */
+  /* margin-bottom: 2%; */
+}
+.title {
+  margin-top: 100px;
+}
+.imgcard {
+  width: 100px;
+  height: 300px;
+}
+.details {
+  float: right;
+  margin-top: 40px;
+  margin-right: 250px;
+  height: 100px;
+}
+.details > p {
+  font-size: 22px;
+  font-weight: 500;
+}
+.details > table {
+  height: 100px;
+}
+
+table {
+  width: 100%;
+  /* width: calc(100vw - 310px); */
+}
+
+.mat-paginator-range-label {
+  display: none;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+/* Border */
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: rgb(255, 255, 255);
+  /* background-color: white; */
+}
+/* Font color */
+input.mat-input-element {
+  color: rgb(0, 0, 0);
+}
+:host::ng-deep {
+  .details {
+    float: right;
+    margin-top: 10px;
+    margin-right: 15%;
+  }
+  .details > table {
+    // border: 2px solid #dddddd;
+    height: 250px;
+    width: 600px;
+    /* font-size: 22px;
+      font-weight: 500; */
+    td {
+      margin-left: 5px;
+    }
+    th,
+    td {
+      border: 2px solid #dddddd;
+      text-transform: uppercase;
+    }
+  }
+}

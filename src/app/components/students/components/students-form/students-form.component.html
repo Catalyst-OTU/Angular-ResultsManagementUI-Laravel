@@ -1,0 +1,267 @@
+<mat-toolbar
+  mat-dialog-title
+  *ngIf="addOnlyForm"
+  style="background-color: rgb(63, 205, 134)63, 205, 134)"
+>
+  Add Student
+</mat-toolbar>
+
+<mat-toolbar
+  mat-dialog-title
+  *ngIf="updateOnlyForm"
+  style="background-color: rgb(63, 205, 134)"
+>
+  Update Student Details
+</mat-toolbar>
+
+<mat-toolbar
+  mat-dialog-title
+  *ngIf="addCourseForm"
+  style="background-color: rgb(63, 205, 134)"
+>
+  Add Student to Course
+</mat-toolbar>
+
+<mat-dialog-content *ngIf="!addCourseForm">
+  <ng-container>
+    <form [formGroup]="studentForm" autocomplete="off">
+      <div>
+        <mat-form-field class="email-full-width">
+          <mat-label>Full Name</mat-label>
+          <input
+            id="full_name"
+            name="full_name"
+            matInput
+            placeholder="Ex. John Doe"
+            formControlName="name"
+            required
+          />
+          <mat-error>
+            {{ errors["fullName"] }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <label id="example-radio-group-label">Gender</label>
+        <mat-radio-group
+          aria-label="Gender"
+          formControlName="gender"
+          class="example-radio-group"
+        >
+          <mat-radio-button value="male">Male</mat-radio-button>&nbsp;&nbsp;
+          <mat-radio-button value="female">Female</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="datee">
+        <mat-form-field appearance="fill" style="width: 100%">
+          <mat-label>Date of Birth</mat-label>
+          <input
+            matInput
+            [matDatepicker]="dp"
+            formControlName="date_of_birth"
+            id="date_of_birth"
+            [max]="maxDate"
+          />
+          <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+          <mat-datepicker #dp></mat-datepicker>
+          <mat-error>
+            {{ errors["date_of_birth"] }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="email-full-width">
+          <mat-label>Email</mat-label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            matInput
+            placeholder="Ex. ice@example.com"
+            formControlName="email"
+            required
+          />
+          <mat-error>
+            {{ errors["email"] }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="email-full-width">
+          <mat-label>Contact</mat-label>
+          <input
+            id="contact"
+            matInput
+            formControlName="contact"
+            maxlength="10"
+          />
+          <mat-error>
+            {{ errors["contact"] }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="email-full-width">
+          <mat-label>Student Id</mat-label>
+          <input
+            type="student_id"
+            id="student_id"
+            name="student_id"
+            matInput
+            placeholder="Ex. 12er33i"
+            formControlName="student_id"
+            required
+          />
+          <mat-error>
+            {{ errors["student_id"] }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field style="width: 100%">
+        <mat-label>Select Course </mat-label>
+        <mat-select
+          formControlName="course_id"
+          required
+          (selectionChange)="getBatchesUnderCourse()"
+        >
+          <mat-option *ngFor="let course of courseList" [value]="course.id">
+            {{ course.course_name }}
+          </mat-option>
+        </mat-select>
+        <mat-error>
+          {{ errors["course_select"] }}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field style="width: 100%">
+        <mat-label>Select Course Batch </mat-label>
+        <mat-select formControlName="batch_id" required>
+          <mat-option *ngFor="let batch of courseBatches" [value]="batch.id">
+            {{ batch.course_level }}&nbsp;&nbsp;&nbsp;({{
+              batch.course_start_date
+            }})
+          </mat-option>
+        </mat-select>
+        <mat-error>
+          {{ errors["course_batch"] }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field style="width: 100%">
+        <mat-label>Select Fees Status </mat-label>
+        <mat-select formControlName="fees" required>
+          <mat-option *ngFor="let fee of feesList" [value]="fee.value">
+            {{ fee.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error>
+          {{ errors["fees"] }}
+        </mat-error>
+      </mat-form-field>
+
+      <div *ngIf="updateOnlyForm">
+        <mat-form-field style="width: 100%">
+          <mat-label>Status </mat-label>
+          <mat-select formControlName="status" required>
+            <mat-option
+              *ngFor="let status of statusList"
+              [value]="status.value"
+            >
+              {{ status.name }}
+            </mat-option>
+          </mat-select>
+          <!-- <mat-error>
+      {{errors.course_select}}
+    </mat-error> -->
+        </mat-form-field>
+      </div>
+    </form>
+    <div></div>
+  </ng-container>
+</mat-dialog-content>
+
+<div *ngIf="addCourseForm">
+  <mat-dialog-content>
+    <ng-container>
+      <form [formGroup]="courseForm" autocomplete="off">
+        <mat-form-field style="width: 100%">
+          <mat-label>Enter New Student ID </mat-label>
+          <input
+            type="student_id"
+            id="student_id"
+            name="student_id"
+            matInput
+            placeholder="Ex. 12er33i"
+            formControlName="student_id"
+            required
+          />
+          <mat-error>
+            {{ errors["student_id"] }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field style="width: 100%">
+          <mat-label>Select Course </mat-label>
+          <mat-select
+            formControlName="course_id"
+            required
+            (selectionChange)="getBatchesUnderCourse2()"
+          >
+            <mat-option *ngFor="let course of courseList" [value]="course.id">
+              {{ course.course_name }}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            {{ errors["course_select"] }}
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field style="width: 100%">
+          <mat-label>Select Course Batch </mat-label>
+          <mat-select formControlName="batch_id" required>
+            <mat-option *ngFor="let batch of courseBatches" [value]="batch.id">
+              {{ batch.course_level }}&nbsp;&nbsp;&nbsp;({{
+                batch.course_start_date
+              }})
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            {{ errors["course_batch"] }}
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </ng-container>
+  </mat-dialog-content>
+</div>
+<div class="dialog-actions">
+  <mat-dialog-actions>
+    <button mat-raised-button color="warn" (click)="close()">Close</button>
+    &nbsp;&nbsp;
+    <button
+      *ngIf="addOnlyForm"
+      mat-raised-button
+      color="primary"
+      (click)="onAdd()"
+      [disabled]="studentForm.invalid"
+    >
+      Add
+    </button>
+    <button
+      *ngIf="updateOnlyForm"
+      mat-raised-button
+      color="primary"
+      (click)="onUpdate()"
+    >
+      Update
+    </button>
+    <button
+      *ngIf="addCourseForm"
+      mat-raised-button
+      color="primary"
+      (click)="addToCourse()"
+      [disabled]="courseForm.invalid"
+    >
+      Add Course
+    </button>
+  </mat-dialog-actions>
+</div>

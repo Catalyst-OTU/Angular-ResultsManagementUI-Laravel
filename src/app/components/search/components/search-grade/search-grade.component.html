@@ -1,0 +1,49 @@
+<div class="home">
+  <h1
+    style="text-align: center; font-weight: bold; position: relative; top: 14vh"
+  >
+    Students Result Management System
+  </h1>
+
+  <mat-card class="form-card">
+    <h2 style="text-align: center">Enter Details To Search</h2>
+    <form [formGroup]="searchForm" autocomplete="off">
+      <mat-form-field class="email-full-width">
+        <mat-label>Student ID</mat-label>
+        <input
+          type="text"
+          id="student_id"
+          name="student_id"
+          matInput
+          placeholder="Ex. 124TRYF"
+          formControlName="student_id"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field style="width: 100%">
+        <mat-label>Select Course </mat-label>
+        <mat-select formControlName="course_id" required>
+          <mat-option *ngFor="let course of courseList" [value]="course.id">
+            {{ course.course_name }}&nbsp;&nbsp;&nbsp;({{
+              course.course_level
+            }})
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div>
+        <button
+          class="email-full-width"
+          mat-raised-button
+          color="primary"
+          [disabled]="searchForm.invalid"
+          (click)="searchGrade()"
+        >
+          <mat-icon>search</mat-icon>
+          Search
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

@@ -1,0 +1,133 @@
+.head-t {
+  border: none;
+  width: 100%;
+  padding: 5px;
+  //   justify-content: space-evenly;
+  //   text-align: center;
+  text-justify: auto;
+}
+.head-t th {
+  text-transform: uppercase;
+}
+
+.image {
+  width: 250px;
+  height: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+// .stud-info {
+//   font-weight: 450;
+//   font-size: 20px;
+// }
+// .stud-info > span {
+//   margin-left: 10px;
+// }
+
+// table tr:not(:first-child) {
+//   counter-increment: rowNumber;
+// }
+
+// table tr td:first-child::before {
+//   content: counter(rowNumber);
+//   min-width: 1em;
+//   margin-right: 0.5em;
+// }
+th {
+  height: 40px;
+}
+td {
+  height: 30px;
+}
+:host ::ng-deep {
+  th {
+    font-weight: normal;
+  }
+  font-family: "Times New Roman", Times, serif;
+
+  font-size: 17px;
+  .rtable {
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border-collapse: collapse;
+    /* float: right; */
+    width: 100%;
+    padding: 5px;
+    font-size: medium;
+
+    th {
+      font-weight: bold;
+    }
+    // height: 200px;
+
+    td,
+    tr,
+    th {
+      border: 3px solid #b6b5b5;
+      padding: 5px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+  #content {
+    width: 55vw;
+    height: 95vh;
+    margin-left: 20vw;
+    margin-top: 5vh;
+    // border: 1px solid #b6b5b5;
+  }
+
+  h4 {
+    margin: 0 0 0px;
+    font-weight: 600;
+    font-family: "Times New Roman", Times, serif;
+  }
+
+  // @media print {
+  //     #content{
+  //         left: 0;
+  //         top: 0;
+
+  //         width: 816px;
+  //         height: 1054px;
+  //     }
+  // }
+}
+
+tr > td:nth-child(even) {
+  text-align: center;
+  font-weight: bolder;
+}
+
+tr > td:nth-child(odd) {
+  text-align: center;
+  max-width: 300px;
+  width: 250px;
+}
+
+.print-button {
+  float: right;
+  margin-right: 100px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-top: 10px;
+}
+
+.footer-right {
+  margin-left: 52%;
+}
+
+@media print {
+  button {
+    display: none;
+  }
+}
+
+.empty {
+  display: flex;
+}

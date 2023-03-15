@@ -1,0 +1,26 @@
+.example-radio-group {
+    display: flex;
+    flex-direction: row;
+    margin: 15px 0;
+  }
+  
+  .example-radio-button {
+    margin: 5px;
+  }
+  .email-full-width {
+    width: 100%;
+  }
+
+.dialog-actions{
+      float: right;
+  }
+  mat-toolbar{
+    height: 45px;
+  }
+
+  /* .datee{
+    float: right;
+    position: absolute;
+    top: 40%;
+    right:3%
+  } */

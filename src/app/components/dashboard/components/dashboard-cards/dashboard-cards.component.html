@@ -1,0 +1,31 @@
+
+
+<div class="p-padding-5 p-mt-3 p-col-12 w-card" *ngIf="messages?.length && messages[0]?.headerMessage"
+[style.cursor]="clickFunction? 'pointer': 'default'" (click)="runClickFunction()">
+  <div class="p-card card card-stats">
+    <div class="card-header" data-background-color="" [ngStyle]="linearStyle">
+      <i class="{{headerIcon}}"></i>
+    </div>
+    <div class="card-content">
+      <h3 *ngIf="cardHeading" class="card-heading">
+        {{cardHeading}}
+      </h3>
+      <div [ngClass]="cardHeading ? 'p-grid p-jc-between p-ac-evenly' : ''">
+      <ng-container *ngFor="let message of messages">
+          <div class="p-col p-flex-column p-jc-between p-fd-column">
+            <p class="category">{{message.headerMessage}}</p>
+            <h3 id="annual_leave" class="card-title">
+              {{message.headerValue}}
+            </h3>
+          </div>
+        </ng-container>
+      </div>
+
+    </div>
+    <!-- <div *ngIf="showFooter" class="card-footer">
+      <div class="stats">
+        <i class="{{footerIcon}}"></i> {{footerMessage}}
+      </div>
+    </div> -->
+  </div>
+</div>

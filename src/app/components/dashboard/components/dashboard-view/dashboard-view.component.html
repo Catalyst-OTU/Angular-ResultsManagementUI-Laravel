@@ -1,0 +1,42 @@
+<h1>Dashboard</h1>
+
+<ng-container *ngFor="let dashItem of cardsData">
+  <div class="dive">
+    <app-dashboard-cards
+      [messages]="dashItem.messages"
+      [headerIcon]="dashItem.headerIcon"
+      [headerColor]="dashItem.headerColor"
+    >
+    </app-dashboard-cards>
+  </div>
+</ng-container>
+
+<div>
+  <!-- <ngx-charts-advanced-pie-chart
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="single"
+    [gradient]="gradient"
+    (select)="onSelect($event)"
+    (activate)="onActivate($event)"
+    (deactivate)="onDeactivate($event)"
+  >
+  </ngx-charts-advanced-pie-chart> -->
+</div>
+<br />
+<div class="chart">
+  <ngx-charts-bar-vertical
+    [view]="[1000, 400]"
+    [results]="saleData"
+    [xAxisLabel]="'Courses'"
+    [legendTitle]="'Students Courses Chart'"
+    [yAxisLabel]="'Students'"
+    [legend]="true"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    [xAxis]="true"
+    [yAxis]="true"
+    [gradient]="true"
+  >
+  </ngx-charts-bar-vertical>
+</div>

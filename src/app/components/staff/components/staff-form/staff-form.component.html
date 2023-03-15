@@ -1,0 +1,218 @@
+<mat-toolbar
+  mat-dialog-title
+  *ngIf="addOnlyForm"
+  style="background-color: rgb(63, 205, 134)"
+>
+  Add Staff
+</mat-toolbar>
+
+<mat-toolbar
+  mat-dialog-title
+  *ngIf="updateOnlyForm"
+  style="background-color: rgb(63, 205, 134)"
+>
+  Update Staff Details
+</mat-toolbar>
+<mat-toolbar
+  mat-dialog-title
+  *ngIf="addCourseForm"
+  style="background-color: rgb(63, 205, 134)"
+>
+  Add Course Lecturer
+</mat-toolbar>
+
+<mat-dialog-content *ngIf="!addCourseForm">
+  <ng-container>
+    <form [formGroup]="staffForm" autocomplete="off">
+      <div>
+        <mat-form-field class="email-full-width">
+          <mat-label>Full Name</mat-label>
+          <input
+            id="name"
+            name="name"
+            matInput
+            placeholder="Ex. John Doe"
+            formControlName="name"
+            required
+          />
+          <mat-error>
+            {{ errors["fullName"] }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="email-full-width">
+          <mat-label>Email</mat-label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            matInput
+            placeholder="Ex. ice@example.com"
+            formControlName="email"
+            autocomplete="off"
+            required
+          />
+          <mat-error>
+            {{ errors["email"] }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="email-full-width">
+          <mat-label>Contact</mat-label>
+          <input
+            id="contact"
+            matInput
+            formControlName="contact"
+            maxlength="10"
+          />
+          <mat-error>
+            {{ errors["contact"] }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="email-full-width">
+          <mat-label>User Type</mat-label>
+          <mat-select formControlName="usertype" required>
+            <mat-option
+              *ngFor="let usertype of usertypes"
+              [value]="usertype.name"
+            >
+              {{ usertype.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            {{ errors["usertype"] }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <!-- <div>
+        <mat-form-field class="email-full-width">
+          <mat-label>Staff Id</mat-label>
+          <input
+            type="staff_id"
+            id="staff_id"
+            name="staff_id"
+            matInput
+            placeholder="Ex. 12er33i"
+            formControlName="staff_id"
+            required
+          />
+          <mat-error>
+            {{ errors["staff_id"] }}
+          </mat-error>
+        </mat-form-field>
+      </div> -->
+
+      <!-- <div *ngIf="addOnlyForm">
+        <mat-form-field class="email-full-width">
+          <mat-label>Password</mat-label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            matInput
+            placeholder="Password"
+            formControlName="password"
+            required
+          />
+          <mat-error>
+            {{ errors["password"] }}
+          </mat-error>
+        </mat-form-field>
+      </div> -->
+      <!-- <div>
+        <mat-form-field
+          class="email-full-width"
+          *ngIf="
+            (updateOnlyForm &&
+              staffForm.controls['usertype'].value === 'Instructor') ||
+            (addOnlyForm &&
+              staffForm.controls['usertype'].value === 'Instructor')
+          "
+        >
+          <mat-label>Select Course </mat-label>
+          <mat-select formControlName="course">
+            <mat-option *ngFor="let course of courseList" [value]="course.id">
+              {{ course.course_name }}&nbsp;&nbsp;&nbsp;({{
+                course.course_level
+              }})
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            {{ errors["course_name"] }}
+          </mat-error>
+        </mat-form-field>
+      </div> -->
+
+      <mat-form-field style="width: 100%" *ngIf="updateOnlyForm">
+        <mat-label>Status </mat-label>
+        <mat-select formControlName="status" required>
+          <mat-option *ngFor="let status of statusList" [value]="status.value">
+            {{ status.name }}
+          </mat-option>
+        </mat-select>
+        <!-- <mat-error>
+            {{errors.course_select}}
+          </mat-error> -->
+      </mat-form-field>
+    </form>
+  </ng-container>
+</mat-dialog-content>
+
+<div *ngIf="addCourseForm">
+  <mat-dialog-content>
+    <ng-container>
+      <form [formGroup]="courseForm">
+        <mat-form-field class="email-full-width">
+          <mat-label>Select Course </mat-label>
+          <mat-select formControlName="course" required>
+            <mat-option *ngFor="let course of courseList" [value]="course.id">
+              {{ course.course_name }}&nbsp;&nbsp;&nbsp;({{
+                course.course_level
+              }})
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            {{ errors["course_name"] }}
+          </mat-error>
+        </mat-form-field>
+        <br />
+      </form>
+    </ng-container>
+  </mat-dialog-content>
+</div>
+<div class="dialog-actions">
+  <mat-dialog-actions>
+    <button mat-raised-button color="warn" (click)="close()">Close</button>
+    &nbsp;&nbsp;
+    <button
+      *ngIf="addOnlyForm"
+      mat-raised-button
+      color="primary"
+      (click)="onAdd()"
+      [disabled]="staffForm.invalid"
+    >
+      Add
+    </button>
+    <button
+      *ngIf="updateOnlyForm"
+      mat-raised-button
+      color="primary"
+      (click)="onUpdate()"
+    >
+      Update
+    </button>
+    <button
+      *ngIf="addCourseForm"
+      mat-raised-button
+      color="primary"
+      (click)="addCourse()"
+      [disabled]="courseForm.invalid"
+    >
+      Add Lecturer
+    </button>
+  </mat-dialog-actions>
+</div>

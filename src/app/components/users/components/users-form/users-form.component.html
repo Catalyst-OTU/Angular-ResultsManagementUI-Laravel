@@ -1,0 +1,129 @@
+<mat-toolbar
+  mat-dialog-title
+  *ngIf="addOnlyForm"
+  style="background-color: rgb(63, 205, 134)"
+>
+  Add User
+</mat-toolbar>
+
+<mat-toolbar
+  mat-dialog-title
+  *ngIf="!addOnlyForm"
+  style="background-color: rgb(63, 205, 134)"
+>
+  Update User Details
+</mat-toolbar>
+
+<mat-dialog-content>
+  <ng-container>
+    <form [formGroup]="userForm">
+      <div>
+        <mat-form-field class="full-width">
+          <mat-label>Email</mat-label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            matInput
+            placeholder="Ex. ice@example.com"
+            formControlName="email"
+            required
+          />
+          <mat-error>
+            {{ errors["email"] }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="full-width">
+          <mat-label>User Type</mat-label>
+          <mat-select formControlName="usertype" required>
+            <mat-option
+              *ngFor="let usertype of usertypes"
+              [value]="usertype.name"
+            >
+              {{ usertype.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            {{ errors["usertype"] }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- <div>
+        <mat-form-field class="full-width">
+          <mat-label>Staff Id</mat-label>
+          <input
+            type="staff_id"
+            id="staff_id"
+            name="staff_id"
+            matInput
+            placeholder="Ex. 12er33i"
+            formControlName="staff_id"
+            required
+          />
+          <mat-error>
+            {{ errors["staff_id"] }}
+          </mat-error>
+        </mat-form-field>
+      </div> -->
+
+      <div>
+        <mat-form-field class="full-width">
+          <mat-label>Password</mat-label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            matInput
+            placeholder="Password"
+            formControlName="password"
+            required
+          />
+          <mat-error>
+            {{ errors["password"] }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field style="width: 100%" *ngIf="updateOnlyForm">
+        <mat-label>Status </mat-label>
+        <mat-select formControlName="status" required>
+          <mat-option *ngFor="let status of statusList" [value]="status.value">
+            {{ status.name }}
+          </mat-option>
+        </mat-select>
+        <!-- <mat-error>
+    {{errors.course_select}}
+  </mat-error> -->
+      </mat-form-field>
+    </form>
+  </ng-container>
+</mat-dialog-content>
+
+<div class="dialog-actions">
+  <mat-dialog-actions>
+    <button mat-raised-button color="warn" (click)="close()">Close</button>
+    &nbsp;&nbsp;
+
+    <button
+      *ngIf="addOnlyForm"
+      mat-raised-button
+      (click)="onAdd()"
+      [disabled]="userForm.invalid"
+      color="primary"
+    >
+      Add
+    </button>
+    <button
+      *ngIf="!addOnlyForm"
+      mat-raised-button
+      (click)="onUpdate()"
+      color="primary"
+    >
+      Update
+    </button>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,15 @@
+.form-card {
+  width: 40vw;
+  margin-top: 15vh;
+  margin-left: 30vw;
+}
+
+.email-full-width {
+  width: 100%;
+}
+
+.home {
+  overflow: hidden;
+  background-color: #f2f2f2;
+  height: 100%;
+}

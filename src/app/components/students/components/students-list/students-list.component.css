@@ -1,0 +1,30 @@
+table {
+    /* width: calc(100vw - 300px); */
+   width: 100%;
+  }
+  .divtable{
+    overflow:hidden;
+    overflow-y: scroll;
+    height: 54vh;
+  }
+  .example-card {
+    width: calc(100vw - 310px);
+  /* margin-left: 15%;
+  top: 40px; */
+  /* margin-top: 4%; */
+  /* margin-bottom: 2%; */
+  }
+  .mat-form-field {
+    font-size: 14px;
+    width: 70%;
+  }
+  .button{
+    left:8%
+  }
+  .searchbar{
+    width: 80%;
+  }
+  .dive{
+    display:inline-flex;
+    margin:20px;
+    }

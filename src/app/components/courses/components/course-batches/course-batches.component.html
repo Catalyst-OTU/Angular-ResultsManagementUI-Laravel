@@ -1,0 +1,103 @@
+<h1>Course Batches</h1>
+<ng-container *ngFor="let dashItem of cardsData">
+  <div class="dive">
+    <app-dashboard-cards
+      [messages]="dashItem.messages"
+      [headerIcon]="dashItem.headerIcon"
+      [headerColor]="dashItem.headerColor"
+    >
+    </app-dashboard-cards>
+  </div>
+</ng-container>
+
+<mat-form-field class="searchbar">
+  <mat-label>Search</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input />
+</mat-form-field>
+
+<button
+  *ngIf="'add' | ablePure: 'Course Batch' | async"
+  mat-raised-button
+  color="primary"
+  class="button"
+  (click)="openAddDialog()"
+>
+  <mat-icon>add</mat-icon> &nbsp;Course Batch
+</button>
+
+<div class="staff-table" style="margin: top 2rem">
+  <table mat-table [dataSource]="batchDataSource" class="mat-elevation-z8">
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          (click)="openInfoDialog(element)"
+          color="accent"
+        >
+          <mat-icon matTooltip="More Info">info</mat-icon>
+        </button>
+        &nbsp;&nbsp;
+        <button
+          *ngIf="'edit' | ablePure: 'Course Batch' | async"
+          mat-icon-button
+          (click)="openUpdateDialog(element)"
+          color="primary"
+        >
+          <mat-icon matTooltip="Update">border_color</mat-icon>
+        </button>
+        &nbsp;&nbsp;
+        <button
+          *ngIf="'disable' | ablePure: 'all' | async"
+          mat-icon-button
+          (click)="openConfirmDialog(element)"
+          color="warn"
+        >
+          <mat-icon matTooltip="Disable">do_disturb_on</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="course_name">
+      <th mat-header-cell *matHeaderCellDef>Course Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.course_name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="course_level">
+      <th mat-header-cell *matHeaderCellDef>Course Level</th>
+      <td mat-cell *matCellDef="let element">{{ element.course_level }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="coordinator">
+      <th mat-header-cell *matHeaderCellDef>Course Coordinator</th>
+      <td mat-cell *matCellDef="let element">{{ element.coordinator }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="course_start_date">
+      <th mat-header-cell *matHeaderCellDef>Start date</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.course_start_date }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="course_end_date">
+      <th mat-header-cell *matHeaderCellDef>End date</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.course_end_date }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedBatchColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedBatchColumns"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="6">
+        No data matching the filter "{{ input.value }}"
+      </td>
+    </tr>
+  </table>
+  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10]"></mat-paginator>
+</div>
