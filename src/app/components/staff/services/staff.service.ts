@@ -40,14 +40,14 @@ export class StaffService extends ResourceService {
     return super.getResources(null, 'api/staffs/getAllStaffs').pipe(
       map((response: any) => {
         let staffArray: any[] = response.data;
-        return staffArray.filter((m) => m.usertype == 'Instructor' && m.usertype == 'Faculty') as Staff[];
+        return staffArray.filter((m) => m.usertype == 'Instructor' && m.usertype == 'Faculty' && m.usertype == 'Course Cordinator') as Staff[];
       })
     );
   }
   getCordinators() {
     return super.getResources(null, 'api/staffs/getInstructors').pipe(
       map((response: any) => {
-        let staffArray: any[] = response;
+        let staffArray: any[] = response.data;
         //return staffArray.filter(
         // (m) => m.department == 'Faculty'
         // ) as Staff[];

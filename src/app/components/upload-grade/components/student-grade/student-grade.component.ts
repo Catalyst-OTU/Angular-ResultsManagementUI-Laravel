@@ -195,9 +195,9 @@ export class StudentGradeComponent implements OnInit {
       approval: false,
     };
     // console.log(data);
-
+    
     this.resultService
-      .updateResource(data, 'saveStudentResults')
+      .updateResource(data, data.id, `api/studentResults/saveStudentResults/${data.id}`)
       .subscribe((d: any) => {
         successAlert('Grade Uploaded Successfully');
       });

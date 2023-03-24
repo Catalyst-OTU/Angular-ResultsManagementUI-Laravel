@@ -185,8 +185,7 @@ export class StudentsFormComponent implements OnInit {
   getBatchesUnderCourse() {
     const id = this.studentForm.get('course_id').value;
     this.batchService.getBatchesUnderCourse(id).subscribe((result:any) => {
-      console.log(result.data)
-      this.courseBatches = result.data.map(
+      this.courseBatches = result.map(
         ({ id, course_level, course_start_date }) => ({
           id,
           course_level,
@@ -199,9 +198,9 @@ export class StudentsFormComponent implements OnInit {
   getBatchesUnderCourse2() {
     const id = this.courseForm.get('course_id').value;
     this.batchService.getBatchesUnderCourse(id).subscribe((result:any) => {
-      console.log(result.data)
+      console.log(result)
 
-      this.courseBatches = result.data.map(
+      this.courseBatches = result.map(
         ({ id, course_level, course_start_date }) => ({
           id,
           course_level,

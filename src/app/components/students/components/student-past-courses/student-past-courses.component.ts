@@ -72,11 +72,26 @@ export class StudentPastCoursesComponent implements OnInit {
       // results[0] is our character
       // results[1] is our character homeworld
       this.batchHistory = results[0];
-      this.pastHistory = results[1];
+      this.pastHistory = results[1].data;
 
-      //console.log(this.pastHistory);
+      // console.log(this.batchHistory);
 
-      this.pastHistory.forEach((element) => {
+      // Object.keys(this.pastHistory).forEach(key => {
+      //   let obj = this.batchHistory.find((x: any) => x.id === key.batch_id);
+
+      //   let index = this.batchHistory.indexOf(obj);
+
+      //   this.batchHistory.fill(
+      //     ((obj.batch_id = element.batch_id),
+      //     (obj.student_id = element.student_id)),
+      //     index,
+      //     index++
+      //   );
+      // })
+
+    // const found =   Object.keys( this.pastHistory).find(key =>  this.pastHistory[key] === this.batchHistory);
+
+      this.batchHistory.forEach((element) => {
         let obj = this.batchHistory.find((x: any) => x.id === element.batch_id);
 
         let index = this.batchHistory.indexOf(obj);

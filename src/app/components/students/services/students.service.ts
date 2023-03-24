@@ -129,7 +129,7 @@ export class StudentsService extends ResourceService {
       })
       .pipe(
         map((response: any) => {
-          let resultsArray: any = response.data;
+          let resultsArray: any = response;
 
           return resultsArray;
         })

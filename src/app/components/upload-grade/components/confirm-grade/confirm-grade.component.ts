@@ -23,7 +23,7 @@ import { NavigationStart, Router } from '@angular/router';
 })
 export class ConfirmGradeComponent implements OnInit {
   displayedColumns = ['student_id', 'name', 'marks', 'approval', 'action'];
-  data;
+  data!:any;
   dataSource = new MatTableDataSource<any>();
   gradeForm: FormGroup;
   moduleInfo;
@@ -51,7 +51,11 @@ export class ConfirmGradeComponent implements OnInit {
     this.resultService
       .getStudentsUnderCourseBatchByModule(localStorage['module_name'])
       .subscribe((students) => {
-        this.data = students;
+        let dd = []
+        dd.push(students)
+        this.data = dd
+        console.log(this.data);
+
         this.gradeForm = this.fb.group({
           gradeRows: this.fb.array(
             this.data.map((val) =>
@@ -149,7 +153,7 @@ export class ConfirmGradeComponent implements OnInit {
     // console.log(data);
 
     this.resultService
-      .updateResource(data, 'saveStudentResults')
+      .updateResource(data, data.id, `api/studentResults/saveStudentResults/${data.id}`)
       .subscribe((d: any) => {
         successAlert('Grade Uploaded Successfully');
       });
@@ -238,7 +242,7 @@ export class ConfirmGradeComponent implements OnInit {
     // console.log(data);
 
     this.resultService
-      .updateResource(data, 'saveStudentResults')
+      .updateResource(data, data.id, `api/studentResults/saveStudentResults/${data.id}`)
       .subscribe((d: any) => {
         successAlert('Grade Confirmed Successfully');
       });

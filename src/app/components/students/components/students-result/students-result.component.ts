@@ -52,7 +52,7 @@ export class StudentsResultComponent implements OnInit {
       )
       .subscribe((data) => {
         let arrNums = [];
-
+console.log(data)
         data.forEach((element) => {
           var nut = parseInt(element.marks);
           arrNums.push(nut);
@@ -128,6 +128,7 @@ export class StudentsResultComponent implements OnInit {
         localStorage['fetch_cors']
       )
       .subscribe((result: any) => {
+        console.log(result);
         this.studentInfo = result[0];
          console.log(this.studentInfo);
         this.loadCourseInfo();

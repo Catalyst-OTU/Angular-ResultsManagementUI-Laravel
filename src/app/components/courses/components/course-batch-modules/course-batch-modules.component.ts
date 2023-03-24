@@ -100,6 +100,7 @@ export class CourseBatchModulesComponent implements OnInit, AfterViewChecked {
       .getModulesUnderCourseBatch(localStorage['batch_id'])
       .subscribe((res: any) => {
         this.data = res;
+        console.log(this.data)
         this.gradeForm = this.fb.group({
           gradeRows: this.fb.array(
             this.data.map((val) =>
@@ -161,6 +162,7 @@ export class CourseBatchModulesComponent implements OnInit, AfterViewChecked {
   }
   uploadSingleGrade = (gradeFormElement, i, element) => {
     gradeFormElement.get('gradeRows').at(i).get('isEditable').patchValue(true);
+    console.log(element)
     let saveStaffRoleData = {
       id: element.value.colId,
       module_end_date: this.datepipe.transform(
