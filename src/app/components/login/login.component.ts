@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
             console.log(typeof ad);
 
             if (ad === undefined) {
-              errorAlert('User not found');
+              errorAlert('Invalid login credentials');
               console.log(typeof ad);
 
               // this.router.navigate(['/dashboard']);
@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit {
           },
           error: (error) => {
             console.log(error);
-            errorAlert('User not found');
+            errorAlert('Invalid login credentials');
 
             if (error.status === 422) {
               Swal.fire({
