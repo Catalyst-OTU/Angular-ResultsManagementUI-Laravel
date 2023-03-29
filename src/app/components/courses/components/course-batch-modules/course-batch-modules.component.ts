@@ -70,7 +70,7 @@ export class CourseBatchModulesComponent implements OnInit, AfterViewChecked {
     this.fetchBatchInfo();
   }
   loadStaffData = () => {
-    this.staffService.getInstructors().subscribe((staffs) => {
+    this.staffService.getCordinators().subscribe((staffs) => {
       this.staffList = staffs;
     });
   };

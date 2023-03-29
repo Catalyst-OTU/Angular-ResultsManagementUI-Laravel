@@ -237,7 +237,7 @@ export class ConfirmGradeComponent implements OnInit {
       marks: element.value.marks,
 
       status: element.value.status,
-      approval: true,
+      approval: 1,
     };
     // console.log(data);
 

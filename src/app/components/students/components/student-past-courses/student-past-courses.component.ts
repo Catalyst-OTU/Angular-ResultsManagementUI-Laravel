@@ -91,21 +91,27 @@ export class StudentPastCoursesComponent implements OnInit {
 
     // const found =   Object.keys( this.pastHistory).find(key =>  this.pastHistory[key] === this.batchHistory);
 
-      this.batchHistory.forEach((element) => {
-        let obj = this.batchHistory.find((x: any) => x.id === element.batch_id);
+//       this.batchHistory.forEach((element) => {
+//         let obj = this.batchHistory.find((x: any) => x.id === element.batch_id);
 
-        let index = this.batchHistory.indexOf(obj);
+//         let index = this.batchHistory.indexOf(obj);
+// console.log(obj)
+// console.log(this.batchHistory)
 
-        this.batchHistory.fill(
-          ((obj.batch_id = element.batch_id),
-          (obj.student_id = element.student_id)),
-          index,
-          index++
-        );
-      });
+// this.batchHistory.forEach((element) => {
+//   element.batch_id = obj.batch_id,
+//   element.student_id = obj.student_id
+// })
+//         // this.batchHistory.fill(
+//         //   ((obj.batch_id = element.batch_id),
+//         //   (obj.student_id = element.student_id)),
+//         //   index,
+//         //   index++
+//         // );
+//       });
       this.dataSource = new MatTableDataSource(this.batchHistory);
       // console.log(this.batchHistory);
-       console.log(this.pastHistory);
+      //  console.log(this.pastHistory);
     });
   }
 
