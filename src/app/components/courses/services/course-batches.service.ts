@@ -187,15 +187,15 @@ export class CourseBatchesService extends ResourceService {
       );
   }
 
-  getResultCourseBatchByStudentIdAndCourse(studentId, batchId) {
+  getResultCourseBatchByStudentIdAndCourse(batchId) {
     return super
       .getResources(
         null,
         `api/courseBatch/selectingFromCourseBatchForResults`,
         true,
         {
-          student_id: studentId,
-          batch_id: batchId,
+          // student_id: studentId,
+          batch_id: batchId
         }
       )
       .pipe(

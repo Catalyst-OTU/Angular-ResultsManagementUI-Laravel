@@ -96,7 +96,7 @@ export class StudentsPastResultComponent implements OnInit, OnDestroy {
   async loadCourseInfo() {
     this.batchService
       .getResultCourseBatchByStudentIdAndCourse(
-        localStorage['past_stud'],
+        // localStorage['past_stud'],
         localStorage['past_cors']
       )
       .subscribe((result) => {

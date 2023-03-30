@@ -86,7 +86,7 @@ export class CourseFormComponent implements OnInit {
   loadCordinators() {
     this.staffService.getCordinators().subscribe((cordinators:any) => {
       this.courseCordinators = cordinators
-        .data.filter((stud) => stud.status === 'Active')
+        .filter((stud) => stud.status === 'Active')
         .map(({ id, name }) => ({
           id,
           name,
